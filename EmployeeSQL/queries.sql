@@ -60,7 +60,7 @@ SELECT
 	e.last_name,
 	e.sex
 FROM employees e
-WHERE e.first_name = 'Hercules' AND e.last_name LIKE 'B%'
+WHERE e.first_name = 'Hercules' AND e.last_name LIKE 'B%';
 
 
 -- List each employee in the Sales department, including their employee number,

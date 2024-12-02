@@ -6,6 +6,12 @@ DROP TABLE IF EXISTS departments;
 DROP TABLE IF EXISTS titles;
 
 
+CREATE TABLE departments (
+    dept_no VARCHAR PRIMARY KEY,
+    dept_name VARCHAR NOT NULL
+);
+
+
 CREATE TABLE titles (
     title_id VARCHAR PRIMARY KEY,
     title VARCHAR NOT NULL
@@ -23,18 +29,11 @@ CREATE TABLE employees (
 );
 
 
-CREATE TABLE departments (
-    dept_no VARCHAR PRIMARY KEY,
-    dept_name VARCHAR NOT NULL
-);
-
-
-CREATE TABLE dept_manager (
+CREATE TABLE salaries (
     emp_no INT REFERENCES employees(emp_no),
-    dept_no VARCHAR REFERENCES departments(dept_no),
-    PRIMARY KEY (emp_no, dept_no)
+    salary INT NOT NULL,
+    PRIMARY KEY (emp_no)
 );
-
 
 
 CREATE TABLE dept_emp (
@@ -44,8 +43,9 @@ CREATE TABLE dept_emp (
 );
 
 
-CREATE TABLE salaries (
+CREATE TABLE dept_manager (
+	dept_no VARCHAR REFERENCES departments(dept_no),
     emp_no INT REFERENCES employees(emp_no),
-    salary INT NOT NULL,
-    PRIMARY KEY (emp_no)
+    PRIMARY KEY (emp_no, dept_no)
 );
+
