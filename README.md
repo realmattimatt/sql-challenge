@@ -5,8 +5,7 @@ Given six older CSV files, I will perform research on employees of a company fro
 
 ## Dependancies
 1. pgAdmin 4
-2. Module 9 Challenge files
-3. 
+2. Module 9 sql-challenge files
    
 ### How to run.
 1. In pgAdmin 4, create a new database connection.
