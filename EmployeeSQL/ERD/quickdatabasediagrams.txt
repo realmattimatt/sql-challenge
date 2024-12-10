@@ -1,34 +1,36 @@
 titles
 -
-title_id VARCHAR PK
-title VARCHAR
+title_id VARCHAR(10) PK NOT NULL
+title VARCHAR(100) NOT NULL
 
 employees
 -
-emp_no INT PK
-emp_title_id VARCHAR FK >- titles.title_id
-birth_date DATE
-first_name  VARCHAR
-last_name VARCHAR
-sex VARCHAR(1)
-hire_date DATE
+emp_no INT PK NOT NULL
+emp_title_id VARCHAR(10) FK >- titles.title_id NOT NULL
+birth_date DATE NOT NULL
+first_name VARCHAR(100) NOT NULL
+last_name VARCHAR(100) NOT NULL
+sex VARCHAR(1) NOT NULL
+hire_date DATE NOT NULL
 
 departments
 -
-dept_no VARCHAR PK
-dept_name VARCHAR
+dept_no VARCHAR(10) PK NOT NULL
+dept_name VARCHAR(100) NOT NULL
 
 dept_manager
 -
-emp_no INT PK FK >- employees.emp_no
-dept_no VARCHAR PK FK >- departments.dept_no
+emp_no INT FK >- employees.emp_no ON DELETE CASCADE
+dept_no VARCHAR(10) FK >- departments.dept_no NOT NULL
+PRIMARY KEY (emp_no, dept_no)
 
 dept_emp
 -
-emp_no INT PK FK >- employees.emp_no
-dept_no VARCHAR PK FK >- departments.dept_no
+emp_no INT FK >- employees.emp_no ON DELETE CASCADE
+dept_no VARCHAR(10) FK >- departments.dept_no NOT NULL
+PRIMARY KEY (emp_no, dept_no)
 
 salaries
 -
-emp_no INT PK FK - employees.emp_no
-salary INT
+emp_no INT PK FK >- employees.emp_no ON DELETE CASCADE
+salary DECIMAL(10, 2) 
